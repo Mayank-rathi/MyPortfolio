@@ -4,106 +4,140 @@ interface Skill {
   name: string;
   icon: string;
   category: string;
-  proficiency: number; // 0-100
 }
 
 const skills: Skill[] = [
-  // Backend Development
-  { name: 'Java', icon: '☕', category: 'Backend Development', proficiency: 95 },
-  { name: 'Spring Boot', icon: '🌱', category: 'Backend Development', proficiency: 90 },
-  { name: 'Spring Security', icon: '🔒', category: 'Backend Development', proficiency: 85 },
-  { name: 'Spring Data JPA', icon: '💾', category: 'Backend Development', proficiency: 90 },
-  { name: 'REST APIs', icon: '🌐', category: 'Backend Development', proficiency: 95 },
-  { name: 'Microservices', icon: '🔧', category: 'Backend Development', proficiency: 85 },
-  { name: 'Hibernate', icon: '🔄', category: 'Backend Development', proficiency: 85 },
-  { name: 'JUnit', icon: '🧪', category: 'Backend Development', proficiency: 90 },
-  { name: 'Mockito', icon: '🎭', category: 'Backend Development', proficiency: 85 },
-  
-  // Database
-  { name: 'MySQL', icon: '🐬', category: 'Database', proficiency: 90 },
-  { name: 'PostgreSQL', icon: '🐘', category: 'Database', proficiency: 85 },
-  { name: 'MongoDB', icon: '🍃', category: 'Database', proficiency: 75 },
-  
-  // Tools & Technologies
-  { name: 'Git', icon: '📦', category: 'Tools & Technologies', proficiency: 95 },
-  { name: 'Maven', icon: '📚', category: 'Tools & Technologies', proficiency: 90 },
-  { name: 'Docker', icon: '🐳', category: 'Tools & Technologies', proficiency: 85 },
-  { name: 'Jenkins', icon: '⚙️', category: 'Tools & Technologies', proficiency: 85 },
-  { name: 'Postman', icon: '📡', category: 'Tools & Technologies', proficiency: 90 },
-  { name: 'Swagger', icon: '📝', category: 'Tools & Technologies', proficiency: 85 },
-  
-  // Design & Architecture
-  { name: 'Design Patterns', icon: '🎨', category: 'Design & Architecture', proficiency: 90 },
-  { name: 'SOLID Principles', icon: '📐', category: 'Design & Architecture', proficiency: 90 },
-  { name: 'Clean Code', icon: '✨', category: 'Design & Architecture', proficiency: 95 },
-  { name: 'OOP', icon: '🔄', category: 'Design & Architecture', proficiency: 95 },
-  { name: 'System Design', icon: '🏗️', category: 'Design & Architecture', proficiency: 85 },
-  
-  // Additional Skills
-  { name: 'Agile', icon: '📋', category: 'Methodologies', proficiency: 90 },
-  { name: 'Scrum', icon: '📊', category: 'Methodologies', proficiency: 90 },
-  { name: 'CI/CD', icon: '🔄', category: 'DevOps', proficiency: 85 },
-  { name: 'AWS', icon: '☁️', category: 'Cloud', proficiency: 75 }
+  // Languages
+  { name: 'Java', icon: '☕', category: 'Languages' },
+  { name: 'SQL', icon: '📊', category: 'Languages' },
+  { name: 'HTML', icon: '🌐', category: 'Languages' },
+  { name: 'CSS', icon: '🎨', category: 'Languages' },
+  { name: 'Shell Scripting', icon: '🐚', category: 'Languages' },
+  { name: 'YAML', icon: '📝', category: 'Languages' },
+  { name: 'Linux CLI', icon: '🐧', category: 'Languages' },
+
+  // Frameworks & Libraries
+  { name: 'Spring Core', icon: '🌱', category: 'Frameworks & Libraries' },
+  { name: 'Spring Boot', icon: '🚀', category: 'Frameworks & Libraries' },
+  { name: 'Spring MVC', icon: '🔄', category: 'Frameworks & Libraries' },
+  { name: 'Spring Security', icon: '🔒', category: 'Frameworks & Libraries' },
+  { name: 'Hibernate', icon: '💾', category: 'Frameworks & Libraries' },
+  { name: 'JPA', icon: '🗄️', category: 'Frameworks & Libraries' },
+  { name: 'Jackson', icon: '🔄', category: 'Frameworks & Libraries' },
+  { name: 'Lombok', icon: '⚡', category: 'Frameworks & Libraries' },
+  { name: 'JSP', icon: '📄', category: 'Frameworks & Libraries' },
+  { name: 'JSTL', icon: '🏷️', category: 'Frameworks & Libraries' },
+  { name: 'Thymeleaf', icon: '🍃', category: 'Frameworks & Libraries' },
+  { name: 'RESTful APIs', icon: '🌐', category: 'Frameworks & Libraries' },
+  { name: 'JSON/XML', icon: '📋', category: 'Frameworks & Libraries' },
+
+  // Databases
+  { name: 'MySQL', icon: '🐬', category: 'Databases' },
+  { name: 'PostgreSQL', icon: '🐘', category: 'Databases' },
+  { name: 'MongoDB', icon: '🍃', category: 'Databases' },
+  { name: 'GraphQL', icon: '📊', category: 'Databases' },
+  { name: 'Redis', icon: '🔴', category: 'Databases' },
+  { name: 'H2 Database', icon: '💾', category: 'Databases' },
+
+  // DevOps & Cloud
+  { name: 'Docker', icon: '🐳', category: 'DevOps & Cloud' },
+  { name: 'Jenkins', icon: '⚙️', category: 'DevOps & Cloud' },
+  { name: 'Concourse CI', icon: '🔄', category: 'DevOps & Cloud' },
+  { name: 'Gradle', icon: '⚡', category: 'DevOps & Cloud' },
+  { name: 'Maven', icon: '📦', category: 'DevOps & Cloud' },
+  { name: 'AWS EC2', icon: '☁️', category: 'DevOps & Cloud' },
+  { name: 'AWS S3', icon: '🗄️', category: 'DevOps & Cloud' },
+  { name: 'AWS RDS', icon: '💾', category: 'DevOps & Cloud' },
+  { name: 'AWS IAM', icon: '🔑', category: 'DevOps & Cloud' },
+  { name: 'AWS Lambda', icon: '⚡', category: 'DevOps & Cloud' },
+  { name: 'Azure DevOps', icon: '☁️', category: 'DevOps & Cloud' },
+  { name: 'CI/CD', icon: '🚀', category: 'DevOps & Cloud' },
+
+  // Testing & API Tools
+  { name: 'Postman', icon: '📬', category: 'Testing & API Tools' },
+  { name: 'ReadyAPI', icon: '🧪', category: 'Testing & API Tools' },
+  { name: 'JUnit', icon: '✅', category: 'Testing & API Tools' },
+  { name: 'Mockito', icon: '🎭', category: 'Testing & API Tools' },
+  { name: 'Swagger', icon: '📝', category: 'Testing & API Tools' },
+
+  // Monitoring & Observability
+  { name: 'Kibana', icon: '📊', category: 'Monitoring & Observability' },
+  { name: 'Grafana', icon: '📈', category: 'Monitoring & Observability' },
+  { name: 'Splunk', icon: '🔍', category: 'Monitoring & Observability' },
+  { name: 'Dynatrace', icon: '📊', category: 'Monitoring & Observability' },
+  { name: 'Prometheus', icon: '🔥', category: 'Monitoring & Observability' },
+
+  // Version Control & IDEs
+  { name: 'Git', icon: '🐙', category: 'Version Control & IDEs' },
+  { name: 'GitHub', icon: '💻', category: 'Version Control & IDEs' },
+  { name: 'GitLab', icon: '🦊', category: 'Version Control & IDEs' },
+  { name: 'Bitbucket', icon: '🪣', category: 'Version Control & IDEs' },
+  { name: 'IntelliJ IDEA', icon: '💡', category: 'Version Control & IDEs' },
+  { name: 'Eclipse', icon: '🌑', category: 'Version Control & IDEs' },
+  { name: 'VS Code', icon: '💻', category: 'Version Control & IDEs' },
+
+  // Project & Collaboration Tools
+  { name: 'Jira', icon: '🎯', category: 'Project & Collaboration Tools' },
+  { name: 'Confluence', icon: '📚', category: 'Project & Collaboration Tools' },
+  { name: 'Slack', icon: '💬', category: 'Project & Collaboration Tools' },
+  { name: 'MS Teams', icon: '👥', category: 'Project & Collaboration Tools' },
+  { name: 'Miro', icon: '🎨', category: 'Project & Collaboration Tools' },
+
+  // Operating Systems
+  { name: 'Windows', icon: '🪟', category: 'Operating Systems' },
+  { name: 'macOS', icon: '🍎', category: 'Operating Systems' },
+  { name: 'Linux', icon: '🐧', category: 'Operating Systems' },
+
+  // AI Tools & Coding Assistants
+  { name: 'GitHub Copilot', icon: '🤖', category: 'AI Tools & Coding Assistants' },
+  { name: 'Cursor AI', icon: '✍️', category: 'AI Tools & Coding Assistants' },
+  { name: 'Cline', icon: '💻', category: 'AI Tools & Coding Assistants' },
+  { name: 'RooCode', icon: '🦘', category: 'AI Tools & Coding Assistants' },
+  { name: 'Gemini', icon: '♊', category: 'AI Tools & Coding Assistants' },
+  { name: 'Grok', icon: '🧠', category: 'AI Tools & Coding Assistants' },
+  { name: 'ChatGPT', icon: '💬', category: 'AI Tools & Coding Assistants' },
 ];
 
 const Skills: React.FC = () => {
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
   return (
-    <section id="skills" className="section bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <section id="skills" className="section bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Skills & Expertise
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A comprehensive collection of technical skills and expertise developed through years of professional experience
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            A comprehensive overview of my technical skills and expertise in software development
           </p>
         </div>
-        
-        <div className="space-y-16">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category) => (
-            <div key={category} className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
-              <h3 className="text-2xl font-bold mb-8 text-primary border-b border-gray-200 dark:border-gray-700 pb-4">
+            <div key={category} className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-5 transform hover:scale-105 transition-transform duration-300">
+              <h3 className="text-lg font-semibold mb-5 text-primary border-b border-gray-200 dark:border-gray-600 pb-2">
                 {category}
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-3 gap-3">
                 {skills
-                  .filter(skill => skill.category === category)
+                  .filter((skill) => skill.category === category)
                   .map((skill) => (
                     <div
                       key={skill.name}
-                      className="group relative bg-gray-50 dark:bg-gray-700 rounded-xl p-4 hover:bg-primary/5 dark:hover:bg-primary/10 transition-all duration-300"
+                      className="flex flex-col items-center p-2 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors group"
                     >
-                      <div className="flex items-center space-x-3">
-                        <span className="text-2xl transform group-hover:scale-110 transition-transform duration-300">
-                          {skill.icon}
-                        </span>
-                        <div className="flex-1">
-                          <span className="font-semibold text-gray-800 dark:text-gray-200 block mb-1">
-                            {skill.name}
-                          </span>
-                          <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1.5">
-                            <div
-                              className="bg-gradient-to-r from-primary to-blue-600 h-1.5 rounded-full transition-all duration-500"
-                              style={{ width: `${skill.proficiency}%` }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="absolute inset-0 rounded-xl border-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <span className="text-xl mb-1 transform group-hover:scale-110 transition-transform">
+                        {skill.icon}
+                      </span>
+                      <span className="text-xs text-gray-800 dark:text-gray-100 font-medium text-center">
+                        {skill.name}
+                      </span>
                     </div>
                   ))}
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-primary to-blue-600 text-white px-6 py-3 rounded-full shadow-lg">
-            <span className="text-2xl">🎯</span>
-            <span className="font-semibold text-lg">25+ Verified Skills</span>
-          </div>
         </div>
       </div>
     </section>

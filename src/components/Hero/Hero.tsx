@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
             <div className="relative w-64 h-64 md:w-80 md:h-80">
               <div className="absolute inset-0 bg-primary rounded-full opacity-20 animate-pulse"></div>
               <img
-                src="/images/profile.jpg"
+                src="/images/projects/ProfilePic.jpg"
                 alt="Mayank Rathi"
                 className="relative w-full h-full object-cover rounded-full border-4 border-white dark:border-gray-800"
               />

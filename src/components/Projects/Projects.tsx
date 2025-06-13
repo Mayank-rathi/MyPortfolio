@@ -35,6 +35,7 @@ const Projects: React.FC = () => {
     'xmeme': '/images/projects/xmeme.png',
     'qeats': '/images/projects/qeats.png',
     'qmoney': '/images/projects/qmoney.png',
+    'ai agent bot using botpress': '/images/projects/Ai_Image_Genration_Bot_Home_Decore.png',
     'default': '/images/projects/default.png'
   };
 

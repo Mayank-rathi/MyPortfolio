@@ -53,24 +53,17 @@ portfolio/
 - [✓] Add role description (Java/Spring Boot Developer)
 - [✓] Implement CTA buttons
 
-#### Skills Section [ ]
-- [ ] Create skills grid layout
-- [ ] Add skill categories:
+#### Skills Section [✓]
+- [✓] Create skills grid layout
+- [✓] Add skill categories:
   - Backend Development
-    - Java
-    - Spring Boot
-    - Spring Security
-    - Spring Data JPA
   - Database
-    - MySQL
-    - PostgreSQL
   - Tools & Technologies
-    - Git
-    - Maven
-    - Docker
-    - Jenkins
-- [ ] Add skill descriptions
-- [ ] Implement skill cards with icons
+  - Software Design & Development
+  - DevOps
+  - AI & Machine Learning
+- [✓] Add skill descriptions
+- [✓] Implement skill cards with icons
 
 #### Projects Section [ ]
 - [ ] Create project card layout
