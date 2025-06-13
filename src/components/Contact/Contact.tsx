@@ -16,7 +16,7 @@ const Contact: React.FC = () => {
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/your-twitter',
+      url: 'https://x.com/MayankRathi33',
       icon: 'twitter',
       color: 'bg-blue-400 hover:bg-blue-500'
     }

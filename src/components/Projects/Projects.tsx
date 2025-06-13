@@ -1,4 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+
+interface Repository {
+  id: number;
+  name: string;
+  description: string;
+  html_url: string;
+  homepage: string;
+  stargazers_count: number;
+  topics: string[];
+}
 
 interface GitHubRepo {
   id: number;
@@ -18,15 +29,26 @@ const Projects: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 6;
 
-  // Project images mapping
+  // Project images mapping with high-quality open-source images
   const projectImages: { [key: string]: string } = {
-    'Car-Parking-Lot': '/images/projects/car-parking.png',
-    'Employee-Wage-ComputationIn-In-Java': '/images/projects/employee-wage.png',
-    'FlipCoinSimulation': '/images/projects/flip-coin.png',
-    'IPL-Analyser': '/images/projects/ipl-analyser.png',
-    'Snake-And-Ladder-Simulator': '/images/projects/snake-ladder.png',
-    'Tic-Tac-Toe-Game': '/images/projects/tic-tac-toe.png',
-    'default': '/images/projects/default.png'
+    'Car-Parking-Lot': 'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?w=800&auto=format&fit=crop&q=60',
+    'Employee-Wage-ComputationIn-In-Java': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=60',
+    'FlipCoinSimulation': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=60',
+    'IPL-Analyser': 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&auto=format&fit=crop&q=60',
+    'Snake-And-Ladder-Simulator': 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&auto=format&fit=crop&q=60',
+    'Tic-Tac-Toe-Game': 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=800&auto=format&fit=crop&q=60',
+    'Bitbucket_PomFeatcher': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=60',
+    'AI_Bird_Finder': 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=800&auto=format&fit=crop&q=60',
+    'OSWAP-velebrity-check': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=60',
+    'Vulnerabilities-Check': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop&q=60',
+    'AI_TelegramBot_For_Stock_Alert': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop&q=60',
+    'AI-Agent-Bot-Using-Botpress': 'https://images.unsplash.com/photo-1677442135136-760c813a743d?w=800&auto=format&fit=crop&q=60',
+    'DevSecOps-CI-CD-Hotstar-Clone': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=60',
+    'devops-maven-docker': 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&auto=format&fit=crop&q=60',
+    'webApp': 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format&fit=crop&q=60',
+    'JenkinCrashCourse': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=60',
+    'excel-data-load': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=60 ',
+    'default': 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=60'
   };
 
   // Handle image loading error
@@ -139,48 +161,56 @@ const Projects: React.FC = () => {
           {currentProjects.map((repo) => (
             <div
               key={repo.id}
-              className="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+              className="group bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 hover:shadow-2xl"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={projectImages[repo.name] || projectImages.default}
                   alt={repo.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   onError={handleImageError}
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-white text-center p-4">
-                    <p className="text-lg font-semibold">{repo.name}</p>
-                    <p className="text-sm mt-2">{repo.description}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-lg font-semibold mb-2">{repo.name}</p>
+                    <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                      {repo.description}
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200 group-hover:text-primary transition-colors duration-300">
                   {repo.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
                   {repo.description || 'No description available'}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {repo.topics.map((topic) => (
                     <span
                       key={topic}
-                      className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs rounded-full"
+                      className="px-2 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 text-xs rounded-full transform hover:scale-110 transition-transform duration-200"
                     >
                       {topic}
                     </span>
                   ))}
                 </div>
                 <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-4">
-                  <span>{repo.language}</span>
-                  <span>⭐ {repo.stargazers_count}</span>
+                  <span className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-primary"></span>
+                    {repo.language}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <span>⭐</span>
+                    {repo.stargazers_count}
+                  </span>
                 </div>
                 <a
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block w-full text-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                  className="inline-block w-full text-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
                   View Project
                 </a>
@@ -194,7 +224,7 @@ const Projects: React.FC = () => {
             <button
               onClick={(e) => handlePageChange(e, currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 disabled:opacity-50"
+              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 disabled:opacity-50 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
             >
               Previous
             </button>
@@ -202,10 +232,10 @@ const Projects: React.FC = () => {
               <button
                 key={index + 1}
                 onClick={(e) => handlePageChange(e, index + 1)}
-                className={`px-4 py-2 rounded-lg ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   currentPage === index + 1
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200 dark:bg-gray-700'
+                    ? 'bg-primary text-white hover:bg-primary/90'
+                    : 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600'
                 }`}
               >
                 {index + 1}
@@ -214,7 +244,7 @@ const Projects: React.FC = () => {
             <button
               onClick={(e) => handlePageChange(e, currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 disabled:opacity-50"
+              className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 disabled:opacity-50 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
             >
               Next
             </button>
