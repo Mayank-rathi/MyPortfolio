@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface Skill {
   name: string;
@@ -15,6 +15,8 @@ const skills: Skill[] = [
   { name: 'Shell Scripting', icon: '🐚', category: 'Languages' },
   { name: 'YAML', icon: '📝', category: 'Languages' },
   { name: 'Linux CLI', icon: '🐧', category: 'Languages' },
+  { name: 'JavaScript', icon: '📜', category: 'Languages' },
+  { name: 'TypeScript', icon: '📘', category: 'Languages' },
 
   // Frameworks & Libraries
   { name: 'Spring Core', icon: '🌱', category: 'Frameworks & Libraries' },
@@ -30,6 +32,9 @@ const skills: Skill[] = [
   { name: 'Thymeleaf', icon: '🍃', category: 'Frameworks & Libraries' },
   { name: 'RESTful APIs', icon: '🌐', category: 'Frameworks & Libraries' },
   { name: 'JSON/XML', icon: '📋', category: 'Frameworks & Libraries' },
+  { name: 'React', icon: '⚛️', category: 'Frameworks & Libraries' },
+  { name: 'Node.js', icon: '🟢', category: 'Frameworks & Libraries' },
+  { name: 'Express.js', icon: '🚂', category: 'Frameworks & Libraries' },
 
   // Databases
   { name: 'MySQL', icon: '🐬', category: 'Databases' },
@@ -38,6 +43,7 @@ const skills: Skill[] = [
   { name: 'GraphQL', icon: '📊', category: 'Databases' },
   { name: 'Redis', icon: '🔴', category: 'Databases' },
   { name: 'H2 Database', icon: '💾', category: 'Databases' },
+  { name: 'Oracle', icon: '🗃️', category: 'Databases' },
 
   // DevOps & Cloud
   { name: 'Docker', icon: '🐳', category: 'DevOps & Cloud' },
@@ -52,6 +58,8 @@ const skills: Skill[] = [
   { name: 'AWS Lambda', icon: '⚡', category: 'DevOps & Cloud' },
   { name: 'Azure DevOps', icon: '☁️', category: 'DevOps & Cloud' },
   { name: 'CI/CD', icon: '🚀', category: 'DevOps & Cloud' },
+  { name: 'Kubernetes', icon: '⚓', category: 'DevOps & Cloud' },
+  { name: 'Terraform', icon: '🏗️', category: 'DevOps & Cloud' },
 
   // Testing & API Tools
   { name: 'Postman', icon: '📬', category: 'Testing & API Tools' },
@@ -59,6 +67,8 @@ const skills: Skill[] = [
   { name: 'JUnit', icon: '✅', category: 'Testing & API Tools' },
   { name: 'Mockito', icon: '🎭', category: 'Testing & API Tools' },
   { name: 'Swagger', icon: '📝', category: 'Testing & API Tools' },
+  { name: 'Jest', icon: '🎯', category: 'Testing & API Tools' },
+  { name: 'Cypress', icon: '🌲', category: 'Testing & API Tools' },
 
   // Monitoring & Observability
   { name: 'Kibana', icon: '📊', category: 'Monitoring & Observability' },
@@ -66,6 +76,7 @@ const skills: Skill[] = [
   { name: 'Splunk', icon: '🔍', category: 'Monitoring & Observability' },
   { name: 'Dynatrace', icon: '📊', category: 'Monitoring & Observability' },
   { name: 'Prometheus', icon: '🔥', category: 'Monitoring & Observability' },
+  { name: 'ELK Stack', icon: '🦒', category: 'Monitoring & Observability' },
 
   // Version Control & IDEs
   { name: 'Git', icon: '🐙', category: 'Version Control & IDEs' },
@@ -82,6 +93,7 @@ const skills: Skill[] = [
   { name: 'Slack', icon: '💬', category: 'Project & Collaboration Tools' },
   { name: 'MS Teams', icon: '👥', category: 'Project & Collaboration Tools' },
   { name: 'Miro', icon: '🎨', category: 'Project & Collaboration Tools' },
+  { name: 'Trello', icon: '📋', category: 'Project & Collaboration Tools' },
 
   // Operating Systems
   { name: 'Windows', icon: '🪟', category: 'Operating Systems' },
@@ -99,45 +111,100 @@ const skills: Skill[] = [
 ];
 
 const Skills: React.FC = () => {
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['Languages']));
+  const [viewAll, setViewAll] = useState(false);
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
+  const toggleCategory = (category: string) => {
+    setExpandedCategories(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(category)) {
+        newSet.delete(category);
+      } else {
+        newSet.add(category);
+      }
+      return newSet;
+    });
+  };
+
+  const toggleViewAll = () => {
+    setViewAll(prev => !prev);
+    if (!viewAll) {
+      setExpandedCategories(new Set(categories));
+    } else {
+      setExpandedCategories(new Set(['Languages']));
+    }
+  };
+
   return (
-    <section id="skills" className="section bg-gray-50 dark:bg-gray-800">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
+    <section id="skills" className="section bg-gray-50 dark:bg-gray-800 py-16">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Skills & Expertise
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4">
             A comprehensive overview of my technical skills and expertise in software development
           </p>
+          <button
+            onClick={toggleViewAll}
+            className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            {viewAll ? 'Collapse All' : 'View All'}
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((category) => (
-            <div key={category} className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-5 transform hover:scale-105 transition-transform duration-300">
-              <h3 className="text-lg font-semibold mb-5 text-primary border-b border-gray-200 dark:border-gray-600 pb-2">
-                {category}
-              </h3>
-              <div className="grid grid-cols-3 gap-3">
-                {skills
-                  .filter((skill) => skill.category === category)
-                  .map((skill) => (
-                    <div
-                      key={skill.name}
-                      className="flex flex-col items-center p-2 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors group"
-                    >
-                      <span className="text-xl mb-1 transform group-hover:scale-110 transition-transform">
-                        {skill.icon}
-                      </span>
-                      <span className="text-xs text-gray-800 dark:text-gray-100 font-medium text-center">
-                        {skill.name}
-                      </span>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {categories.map((category) => (
+              <div
+                key={category}
+                className="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden h-fit"
+              >
+                <button
+                  onClick={() => toggleCategory(category)}
+                  className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                >
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                    {category}
+                  </h3>
+                  <span className={`transform transition-transform duration-300 ${
+                    expandedCategories.has(category) ? 'rotate-180' : ''
+                  }`}>
+                    ▼
+                  </span>
+                </button>
+                
+                <div
+                  className={`transition-all duration-300 ease-in-out ${
+                    expandedCategories.has(category)
+                      ? 'max-h-[500px] opacity-100'
+                      : 'max-h-0 opacity-0'
+                  } overflow-hidden`}
+                >
+                  <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-600">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                      {skills
+                        .filter((skill) => skill.category === category)
+                        .map((skill) => (
+                          <div
+                            key={skill.name}
+                            className="flex flex-col items-center p-2 bg-gray-100 dark:bg-gray-600 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors group"
+                          >
+                            <span className="text-xl mb-1 transform group-hover:scale-110 transition-transform">
+                              {skill.icon}
+                            </span>
+                            <span className="text-xs text-gray-800 dark:text-gray-100 font-medium text-center">
+                              {skill.name}
+                            </span>
+                          </div>
+                        ))}
                     </div>
-                  ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
